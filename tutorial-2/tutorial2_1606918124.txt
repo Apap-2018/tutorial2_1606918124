@@ -1,0 +1,31 @@
+Bahy Helmi Hartoyo Putra
+1606918124
+APAP - C
+
+Latihan Project Viral
+1.
+a. Tidak terjadi compile error.
+b. Yang terjadi adalah browser menampilkan Whitelabel Error Page, hal ini terjadi karena ada error mapping terjadi dan kita tidak menghandle error tersebut. Kita mengakses /viral padahal tidak ada mapping ke /viral, melainkan ke /viral2jari.
+c. Untuk melakukan mapping url, jadi saat browser mengakses /viral, maka akan dijalankan fungsi yang berada di bawah  @RequestMapping(“/viral”).
+
+2.
+a. Tidak terjadi compile error.
+b. Yang terjadi adalah halaman tetap terbuka normal dan menunjukkan konten dari viral.html. Hal ini terjadi karena kita hanya merubah nama method dari "index" menjadi "viral" dan itu tidak akan mempengaruhi apapun karena pada dasarnya nama method bebas.
+
+3. 
+a. Tidak terjadi compile error.
+b. Terjadi Whitelabel Error Page, pada Controller kita mengganti return template dari "viral" menjadi "viral2jari", method index() akan mencoba mengembalikan templates dengan nama "viral2jari.html" yang mana belum pernah kita buat/tidak ada di folder "templates".
+c. Return mengembalikan page yang direquest, jadi method tersebut akan merender halaman web dengan nama "viral.html" di folder "templates".
+
+Latihan Request Parameter
+1. Karena "In My Feeling" sudah di override oleh text yang kita buat di dalam <p th:text.
+2. Whitelabel Error Page, status = 404, not found. Dilakukan mapping URL ke viral/challenge, namun yang diakses adalah /viral sedangkan mapping yang menghandle /viral sudah tidak ada/kita ganti.
+3. 
+a. Whitelabel Error Page, type=Bad Request, status=400, Required String parameter 'name' is not present. Constructornya membutuhkan parameter "name" sementara di URL kita tidak menyediakan parameter value tersebut.
+b. Bisa diakses, "null do you love me?" akan keluar. Karena parameter tidak wajib diisi sehingga value akan diisi "null".
+c. Bisa diakses, "kiki do you love me?". Kalau parameter tidak diisi maka otomatis diisi "kiki".
+
+Latihan Path Variable
+1. Whitelabel Error Page, type=Bad Request, status=400, required string parameter 'name' is not present. Parameter "name" setelah /challenge/ dibutuhkan.
+2. Whitelabel Error Page, type=Internal Server Error, status 500. Ada dua mapping yang menghandle URL /challenge. Sehingga terjadi ambigu dalam handlingnya.
+3. Bisa diakses, "kiki do you love me?" Parameter terisi, dan hanya ada 1 URL Mapping yang melakukan handling terhadap URL tersebut sehingga berjalan lancar.
